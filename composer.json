@@ -1,0 +1,9 @@
+{
+  "name": "euf/home_api_metrics",
+  "type": "drupal-module",
+  "description": "Home API metrics",
+  "keywords": [
+  ],
+  "homepage": "https://github.com/EuropeanUniversityFoundation/home_api_metrics",
+  "minimum-stability": "dev"
+}
