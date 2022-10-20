@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Default theme implementation to present a home api metrics entity.
+ *
+ * This template is used when viewing a registered home api metrics's page,
+ * e.g., /admin/content/home-api-metrics)/123. 123 being the home api metrics's ID.
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ *   print a subset such as 'content.title'.
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_home_api_metrics()
+ */
+#}
+<article{{ attributes }}>
+  {% if content %}
+    {{- content -}}
+  {% endif %}
+</article>

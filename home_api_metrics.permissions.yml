@@ -1,0 +1,6 @@
+access home api metrics overview:
+  title: 'Access home api metrics overview page'
+use home_api_metrics:
+  title: 'Access HOME API metrics endpoints'
+  description: 'Permission to access the HOME API metrics endpoint'
+  restrict access: true

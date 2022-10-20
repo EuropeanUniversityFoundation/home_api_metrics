@@ -1,0 +1,5 @@
+home_api_metrics.add_form:
+  route_name: entity.home_api_metrics.add_form
+  title: 'Add home api metrics'
+  appears_on:
+    - entity.home_api_metrics.collection

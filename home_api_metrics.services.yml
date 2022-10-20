@@ -1,0 +1,4 @@
+services:
+  home_api_metrics.service:
+    class: Drupal\home_api_metrics\HomeApiMetricsService
+    arguments: ['@entity_type.manager', '@datetime.time']

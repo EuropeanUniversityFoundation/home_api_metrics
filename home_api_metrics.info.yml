@@ -1,0 +1,6 @@
+name: HOME API metrics
+type: module
+description: 'Provides a home api metrics entity.'
+package: HOME
+core: 8.x
+core_version_requirement: ^8 || ^9
