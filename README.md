@@ -19,3 +19,6 @@ The module adds two endpoints:
     Counts how many times it was called in a given month
   - /accomodation/details: Accepts GET requests with one string query parameter: `group`.
     Counts how many times it was called in a given month with the same parameter value.
+
+## Permissions and authentication
+The module adds the `use home_api_metrics` permission, that has to be added to the roles that should be able to call it. Of course, being an api endpoint, the client should take care of authentication. By default, `cookies` and `api_key` authentication types are enabled for the module.
