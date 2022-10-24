@@ -1,18 +1,21 @@
 home_api_metrics.accomodation.open:
-  path: '/accomodation/open'
+  path: '/accommodation/metrics/module_open'
   defaults:
-    _controller: '\Drupal\home_api_metrics\Controller\HomeApiMetricsController::handleOpen'
+    _controller: '\Drupal\home_api_metrics\Controller\HomeApiMetricsController::handleModuleOpen'
     _title: 'HOME metrics module opened endpoint'
   requirements:
     _permission: 'use home_api_metrics' # TODO: Review later
   options:
     _auth: ['key_auth', 'cookie'] # TODO: Review later
 home_api_metrics.accomodation.details:
-  path: '/accomodation/details'
+  path: '/accommodation/metrics/provider_open/{provider_id}'
   defaults:
-    _controller: '\Drupal\home_api_metrics\Controller\HomeApiMetricsController::handleDetails'
+    _controller: '\Drupal\home_api_metrics\Controller\HomeApiMetricsController::handleProviderOpen'
     _title: 'HOME metrics details opened endpoint'
   requirements:
     _permission: 'use home_api_metrics' # TODO: Review later
   options:
     _auth: ['key_auth', 'cookie'] # TODO: Review later
+    parameters:
+      provider_id:
+        type: string

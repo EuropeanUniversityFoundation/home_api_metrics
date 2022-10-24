@@ -87,7 +87,7 @@ class HomeApiMetricsListBuilder extends EntityListBuilder {
    * {@inheritdoc}
    */
   public function buildRow(EntityInterface $entity) {
-    /* @var $entity \Drupal\home_api_metrics\HomeApiMetricsInterface */
+    /** @var \Drupal\home_api_metrics\HomeApiMetricsInterface $entity */
     $row['id'] = $entity->id();
     $row['title'] = $entity->toLink();
     return $row + parent::buildRow($entity);

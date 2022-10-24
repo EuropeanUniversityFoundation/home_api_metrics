@@ -54,9 +54,9 @@ class HomeApiMetricsController extends ControllerBase {
   /**
    * Entry point of the open route controller.
    */
-  public function handleOpen(Request $request): JsonResponse {
+  public function handleModuleOpen(Request $request): JsonResponse {
     $time = $this->time->getRequestTime();
-    $entity = $this->homeApiMetricsService->addOpen($time);
+    $entity = $this->homeApiMetricsService->addModuleOpen($time);
 
     return new JsonResponse(
       [
@@ -70,20 +70,12 @@ class HomeApiMetricsController extends ControllerBase {
   /**
    * Entry point of the details controller.
    */
-  public function handleDetails(Request $request) {
+  public function handleProviderOpen(Request $request, string $provider_id) {
     $time = $this->time->getRequestTime();
 
-    if (!$this->queryParamsValid($request)) {
-      return new JsonResponse(
-        [
-          'error' => 'Invalid parameter name (valid: group) or count (valid: 1)',
-          'status code' => 400,
-        ], 400
-      );
-    }
     $group = $request->query->get('group');
 
-    $entity = $this->homeApiMetricsService->addDetails($time, $group);
+    $entity = $this->homeApiMetricsService->addProviderOpen($time, $provider_id);
 
     return new JsonResponse(
       [
@@ -93,22 +85,6 @@ class HomeApiMetricsController extends ControllerBase {
         'click_count' => $entity->getClickCount(),
       ]
     );
-  }
-
-  /**
-   * Undocumented function.
-   *
-   * @param \Symfony\Component\HttpFoundation\Request $request
-   *   The incoming request.
-   *
-   * @return bool
-   *   Query parameteres valid / invalid.
-   */
-  protected function queryParamsValid(Request $request) {
-    $params = $request->query;
-    return (
-      $request->query->get('group') != NULL &&
-      count($params) == 1);
   }
 
 }

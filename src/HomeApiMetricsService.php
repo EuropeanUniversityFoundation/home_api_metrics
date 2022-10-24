@@ -47,8 +47,8 @@ class HomeApiMetricsService {
    * @return \Drupal\home_api_metrics\HomeApiMetrics
    *   The modified HomeApiMetrics entity.
    */
-  public function addOpen(int $time) {
-    $entity = $this->getOpenByTimestamp($time);
+  public function addModuleOpen(int $time) {
+    $entity = $this->getModuleOpenByTimestamp($time);
 
     $click_count = $entity->getClickCount();
     $entity = $entity->setClickCount($click_count + 1);
@@ -68,8 +68,8 @@ class HomeApiMetricsService {
    * @return \Drupal\home_api_metrics\HomeApiMetrics
    *   The modified HomeApiMetrics entity.
    */
-  public function addDetails(int $time, string $group) {
-    $entity = $this->getDetailsByTimestampAndGroup($time, $group);
+  public function addProviderOpen(int $time, string $group) {
+    $entity = $this->getProviderOpenByTimestamp($time, $group);
 
     $click_count = $entity->getClickCount();
     $entity = $entity->setClickCount($click_count + 1);
@@ -81,7 +81,7 @@ class HomeApiMetricsService {
   /**
    * Returns home_api_metrics_entity for a month in a year.
    */
-  public function getOpenByTimestamp(int $time) {
+  public function getModuleOpenByTimestamp(int $time) {
     $year = $this->getYearFromTimestamp($time);
     $month = $this->getMonthFromTimestamp($time);
 
@@ -115,7 +115,7 @@ class HomeApiMetricsService {
   /**
    * Returns home_api_metrics_entity for a month and a provider in a year.
    */
-  public function getDetailsByTimestampAndGroup(int $time, string $group) {
+  public function getProviderOpenByTimestamp(int $time, string $group) {
     $year = $this->getYearFromTimestamp($time);
     $month = $this->getMonthFromTimestamp($time);
 
