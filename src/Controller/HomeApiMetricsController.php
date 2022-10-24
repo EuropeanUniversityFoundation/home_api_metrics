@@ -56,7 +56,6 @@ class HomeApiMetricsController extends ControllerBase {
    */
   public function handleOpen(Request $request): JsonResponse {
     $time = $this->time->getRequestTime();
-    // $time = \strtotime('2022-05-28');
     $entity = $this->homeApiMetricsService->addOpen($time);
 
     return new JsonResponse(
@@ -73,6 +72,15 @@ class HomeApiMetricsController extends ControllerBase {
    */
   public function handleDetails(Request $request) {
     $time = $this->time->getRequestTime();
+
+    if (!$this->queryParamsValid($request)) {
+      return new JsonResponse(
+        [
+          'error' => 'Invalid parameter name (valid: group) or count (valid: 1)',
+          'status code' => 400,
+        ], 400
+      );
+    }
     $group = $request->query->get('group');
 
     $entity = $this->homeApiMetricsService->addDetails($time, $group);
@@ -85,6 +93,22 @@ class HomeApiMetricsController extends ControllerBase {
         'click_count' => $entity->getClickCount(),
       ]
     );
+  }
+
+  /**
+   * Undocumented function.
+   *
+   * @param \Symfony\Component\HttpFoundation\Request $request
+   *   The incoming request.
+   *
+   * @return bool
+   *   Query parameteres valid / invalid.
+   */
+  protected function queryParamsValid(Request $request) {
+    $params = $request->query;
+    return (
+      $request->query->get('group') != NULL &&
+      count($params) == 1);
   }
 
 }
