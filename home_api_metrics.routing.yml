@@ -1,5 +1,6 @@
 home_api_metrics.accomodation.open:
   path: '/accommodation/metrics/module_open'
+  methods: ['POST']
   defaults:
     _controller: '\Drupal\home_api_metrics\Controller\HomeApiMetricsController::handleModuleOpen'
     _title: 'HOME metrics module opened endpoint'
@@ -9,6 +10,7 @@ home_api_metrics.accomodation.open:
     _auth: ['key_auth', 'cookie'] # TODO: Review later
 home_api_metrics.accomodation.details:
   path: '/accommodation/metrics/provider_open/{provider_id}'
+  methods: ['POST']
   defaults:
     _controller: '\Drupal\home_api_metrics\Controller\HomeApiMetricsController::handleProviderOpen'
     _title: 'HOME metrics details opened endpoint'
