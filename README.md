@@ -15,13 +15,19 @@ The module creates a `home_api_metrics ` entity, that counts calls to the endpoi
 
 ## Endpoints added
 The module adds two endpoints:
-  - `/accommodation/metrics/module_open`: 
+  - `/accommodation/metrics/module/open`: 
     - Accepts POST requests without a body, needs the `use home_api_metrics` permission.
     - Counts how many times it was called in a given month.
-  - `/accommodation/metrics/provider_open/{provider_id}`:
+  - `/accommodation/metrics/provider/open/{provider_id}`:
     - Accepts POST requests with an empty body. 
     - URL parameter is the id of the provider fetched from the HOME API.
     - Counts how many times it was called in a given month with the same provider id.
+  - `/accommodation/metrics/module/stats`
+    - Accepts GET requests
+    - Returns all the metrics data per year and month, in this case how many times the accommodation module was opened.
+  - `/accommodation/metrics/provider/stats`
+    - Accepts GET requests
+    - Returns all the metrics data per year and month and provider, in this case how many times any listing of one provider was opened in a given year and month
 
 ## Permissions and authentication
 The module adds the `use home_api_metrics` permission, that has to be added to the roles that should be able to call it. Of course, being an api endpoint, the client should take care of authentication. By default, `cookies` and `api_key` authentication types are enabled for the module.

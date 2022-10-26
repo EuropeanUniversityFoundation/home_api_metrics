@@ -56,6 +56,7 @@ class HomeApiMetricsOpenController extends ControllerBase {
    */
   public function handleModuleOpen(Request $request): JsonResponse {
     $time = $this->time->getRequestTime();
+    // $time = strtotime('2022-11-04');
     $entity = $this->homeApiMetricsService->addModuleOpen($time);
 
     return new JsonResponse(
@@ -72,7 +73,7 @@ class HomeApiMetricsOpenController extends ControllerBase {
    */
   public function handleProviderOpen(Request $request, string $provider_id) {
     $time = $this->time->getRequestTime();
-
+    // $time = strtotime('2022-08-01');
     $group = $request->query->get('group');
 
     $entity = $this->homeApiMetricsService->addProviderOpen($time, $provider_id);
