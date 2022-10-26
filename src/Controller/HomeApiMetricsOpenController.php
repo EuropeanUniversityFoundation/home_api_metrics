@@ -10,7 +10,7 @@ use Drupal\Component\DateTime\Time;
 use Drupal\home_api_metrics\HomeApiMetricsService;
 
 /**
- * Middleware for the HOME API.
+ * Metrics for the HOME API.
  */
 class HomeApiMetricsOpenController extends ControllerBase {
 
@@ -52,7 +52,7 @@ class HomeApiMetricsOpenController extends ControllerBase {
   }
 
   /**
-   * Entry point of the open route controller.
+   * Entry point of the module open route controller.
    */
   public function handleModuleOpen(Request $request): JsonResponse {
     $time = $this->time->getRequestTime();
@@ -69,7 +69,7 @@ class HomeApiMetricsOpenController extends ControllerBase {
   }
 
   /**
-   * Entry point of the details controller.
+   * Entry point of the provider open route controller.
    */
   public function handleProviderOpen(Request $request, string $provider_id) {
     $time = $this->time->getRequestTime();
