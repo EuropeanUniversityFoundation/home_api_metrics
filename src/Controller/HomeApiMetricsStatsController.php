@@ -12,7 +12,7 @@ use Drupal\home_api_metrics\HomeApiMetricsService;
 /**
  * Middleware for the HOME API.
  */
-class HomeApiMetricsController extends ControllerBase {
+class HomeApiMetricsStatsController extends ControllerBase {
 
   /**
    * HOME API Metrics Service.
@@ -54,37 +54,19 @@ class HomeApiMetricsController extends ControllerBase {
   /**
    * Entry point of the open route controller.
    */
-  public function handleModuleOpen(Request $request): JsonResponse {
-    $time = $this->time->getRequestTime();
-    $entity = $this->homeApiMetricsService->addModuleOpen($time);
+  public function handleModuleStats(Request $request): JsonResponse {
+    $module_stats = $this->homeApiMetricsService->getModuleStats();
 
-    return new JsonResponse(
-      [
-        'year' => $entity->getYear(),
-        'month' => $entity->getMonth(),
-        'click_count' => $entity->getClickCount(),
-      ]
-    );
+    return new JsonResponse($module_stats);
   }
 
   /**
    * Entry point of the details controller.
    */
-  public function handleProviderOpen(Request $request, string $provider_id) {
-    $time = $this->time->getRequestTime();
+  public function handleProviderStats(Request $request) {
+    $provider_stats = $this->homeApiMetricsService->getProviderStats();
 
-    $group = $request->query->get('group');
-
-    $entity = $this->homeApiMetricsService->addProviderOpen($time, $provider_id);
-
-    return new JsonResponse(
-      [
-        'year' => $entity->getYear(),
-        'month' => $entity->getMonth(),
-        'group' => $entity->getGroup(),
-        'click_count' => $entity->getClickCount(),
-      ]
-    );
+    return new JsonResponse($provider_stats);
   }
 
 }

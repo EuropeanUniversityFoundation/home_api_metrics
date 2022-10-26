@@ -172,4 +172,99 @@ class HomeApiMetricsService {
     return date('m', $time);
   }
 
+  /**
+   * Gets statistics for module open.
+   *
+   * @return array
+   *   Returns stats in format:
+   *   [
+   *     [year] =>
+   *       [
+   *         'month' => int
+   *         'click_count' => int
+   *       ]
+   *   ]
+   */
+  public function getModuleStats() {
+    $stats = [];
+    // Query the metrics entity.
+    $ids = $this->entityStorage->getQuery()
+      ->condition('group', NULL, 'IS NULL')
+      ->sort('year')
+      ->sort('month')
+      ->execute();
+
+    if (!empty($ids)) {
+      $entities = $this->entityStorage->loadMultiple($ids);
+    }
+    else {
+      return [];
+    }
+
+    foreach ($entities as $entity) {
+      $year = $entity->getYear();
+      $month = $entity->getMonth();
+      $click_count = $entity->getClickCount();
+      if (!isset($stats[$year])) {
+        $stats[$year] = [];
+      }
+      $stats[$year][] = [
+        'month' => $month,
+        'click_count' => $click_count,
+      ];
+    }
+
+    return $stats;
+  }
+
+  /**
+   * Gets statistics for provider opens.
+   *
+   * @return array
+   *   Returns stats in format:
+   *   [
+   *     [year] =>
+   *       [
+   *         'provider_id' => string
+   *         'month' => int
+   *         'click_count' => int
+   *       ]
+   *   ]
+   */
+  public function getProviderStats() {
+    $stats = [];
+    // Query the metrics entity.
+    $ids = $this->entityStorage->getQuery()
+      ->condition('group', NULL, 'IS NOT NULL')
+      ->sort('year')
+      ->sort('month')
+      ->sort('group')
+      ->execute();
+
+    if (!empty($ids)) {
+      $entities = $this->entityStorage->loadMultiple($ids);
+    }
+    else {
+      return [];
+    }
+
+    foreach ($entities as $entity) {
+      $year = $entity->getYear();
+      $month = $entity->getMonth();
+      $group = $entity->getGroup();
+      $click_count = $entity->getClickCount();
+
+      if (!isset($stats[$year])) {
+        $stats[$year] = [];
+      }
+      $stats[$year][] = [
+        'provider_id' => $group,
+        'month' => $month,
+        'click_count' => $click_count,
+      ];
+    }
+
+    return $stats;
+  }
+
 }

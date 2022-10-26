@@ -1,19 +1,19 @@
-home_api_metrics.accomodation.open:
-  path: '/accommodation/metrics/module_open'
+home_api_metrics.accomodation.module.open:
+  path: '/accommodation/metrics/module/open'
   methods: ['POST']
   defaults:
-    _controller: '\Drupal\home_api_metrics\Controller\HomeApiMetricsController::handleModuleOpen'
+    _controller: '\Drupal\home_api_metrics\Controller\HomeApiMetricsOpenController::handleModuleOpen'
     _title: 'HOME metrics module opened endpoint'
   requirements:
     _permission: 'use home_api_metrics' # TODO: Review later
   options:
     _auth: ['key_auth', 'cookie'] # TODO: Review later
-home_api_metrics.accomodation.details:
-  path: '/accommodation/metrics/provider_open/{provider_id}'
+home_api_metrics.accomodation.provider.open:
+  path: '/accommodation/metrics/provider/open/{provider_id}'
   methods: ['POST']
   defaults:
-    _controller: '\Drupal\home_api_metrics\Controller\HomeApiMetricsController::handleProviderOpen'
-    _title: 'HOME metrics details opened endpoint'
+    _controller: '\Drupal\home_api_metrics\Controller\HomeApiMetricsOpenController::handleProviderOpen'
+    _title: 'HOME metrics provider opened endpoint'
   requirements:
     _permission: 'use home_api_metrics' # TODO: Review later
   options:
@@ -21,3 +21,19 @@ home_api_metrics.accomodation.details:
     parameters:
       provider_id:
         type: string
+home_api_metrics.accommodation.module.stats:
+  path: '/accommodation/metrics/module/stats'
+  methods: ['GET']
+  defaults:
+    _controller: '\Drupal\home_api_metrics\Controller\HomeApiMetricsStatsController::handleModuleStats'
+    _title: 'HOME metrics module statistics endpoint'
+  requirements:
+    _permission: 'use home_api_metrics' # TODO: Review later
+home_api_metrics.accommodation.provider.stats:
+  path: '/accommodation/metrics/provider/stats'
+  methods: ['GET']
+  defaults:
+    _controller: '\Drupal\home_api_metrics\Controller\HomeApiMetricsStatsController::handleProviderStats'
+    _title: 'HOME metrics module statistics endpoint'
+  requirements:
+    _permission: 'use home_api_metrics' # TODO: Review later
