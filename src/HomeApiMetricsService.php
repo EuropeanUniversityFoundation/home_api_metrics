@@ -205,6 +205,7 @@ class HomeApiMetricsService {
       $year = $entity->getYear();
       $month = $entity->getMonth();
       $click_count = $entity->getClickCount();
+
       if (!isset($stats[$year])) {
         $stats[$year] = [];
       }
