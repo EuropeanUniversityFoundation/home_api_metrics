@@ -18,6 +18,7 @@ use Drupal\home_api_metrics\HomeApiMetricsInterface;
  *     "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",
  *     "list_builder" = "Drupal\home_api_metrics\HomeApiMetricsListBuilder",
  *     "views_data" = "Drupal\views\EntityViewsData",
+ *     "access" = "Drupal\home_api_metrics\HomeApiMetricsAccessControlHandler",
  *     "form" = {
  *       "add" = "Drupal\home_api_metrics\Form\HomeApiMetricsForm",
  *       "edit" = "Drupal\home_api_metrics\Form\HomeApiMetricsForm",
@@ -28,7 +29,7 @@ use Drupal\home_api_metrics\HomeApiMetricsInterface;
  *     }
  *   },
  *   base_table = "home_api_metrics",
- *   admin_permission = "access home api metrics overview",
+ *   admin_permission = "administer home api metrics",
  *   entity_keys = {
  *     "id" = "id",
  *     "label" = "title",

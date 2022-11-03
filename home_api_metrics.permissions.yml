@@ -1,6 +1,21 @@
-access home api metrics overview:
-  title: 'Access home api metrics overview page'
-use home_api_metrics:
-  title: 'Access HOME API metrics endpoints'
-  description: 'Permission to access the HOME API metrics endpoint'
+use home api metrics endpoints:
+  title: 'Access the HOME API Metrics endpoint'
+  description: 'Permission to access the HOME API metrics endpoint. Should be permitted for every authenticated user in order for HOME API metrics to work properly.'
   restrict access: true
+access home api metrics statistics endpoint:
+  title: 'Access the endpoints, that expose all HOME API metrics statistics'
+  restrict access: true
+administer home api metrics:
+  title: 'Administer Home Api Metrics data and settings'
+  restrict access: true
+access home api metrics overview:
+  title: 'Access Home Api Metrics overview page'
+# delete home api metrics:
+#   title: Delete Home Api Metrics
+# create home api metrics:
+#   title: Create Home Api Metrics
+# view home api metrics:
+#   title: View Home Api Metrics
+# edit home api metrics:
+#   title: Edit Home Api Metrics
+
