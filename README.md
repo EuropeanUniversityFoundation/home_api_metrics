@@ -40,4 +40,4 @@ The module adds two endpoints:
     - Returns all the metrics data per year and month and provider, in this case how many times any listing of one provider was opened in a given year and month
 
 ## Permissions and authentication
-The module adds the `use home api metrics endpoints` and `access home api metrics statistics endpoint` permission, that has to be added to the roles that should be able to call it. The client should take care of authentication. By default, `cookies` and `api_key` authentication types are enabled for the module.
+The module adds the `use home api metrics endpoints` and `access home api metrics statistics endpoint` permissions, these have to be added to the roles that should be able to call it. The client should take care of authentication. By default, `cookies` and `api_key` authentication types are enabled for the module.
