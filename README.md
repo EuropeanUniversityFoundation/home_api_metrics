@@ -12,7 +12,7 @@ We recommend installing this module via composer with the following steps:
     "repositories": [
       ...
   
-      {"type": "vcs", "url": "https://github.com/EuropeanUniversityFoundation/home_api_middleware/"},
+      {"type": "vcs", "url": "https://github.com/EuropeanUniversityFoundation/home_api_metrics/"},
     ],
     ...
   }  
