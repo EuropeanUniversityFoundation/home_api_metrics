@@ -15,7 +15,7 @@ interface HomeApiMetricsInterface extends ContentEntityInterface {
    * @return string
    *   Title of the home api metrics.
    */
-  public function getTitle();
+  public function getTitle(): string;
 
   /**
    * Sets the home api metrics title.
@@ -26,6 +26,30 @@ interface HomeApiMetricsInterface extends ContentEntityInterface {
    * @return \Drupal\home_api_metrics\HomeApiMetricsInterface
    *   The called home api metrics entity.
    */
-  public function setTitle($title);
+  public function setTitle($title): HomeApiMetricsInterface;
+
+  /**
+   * Gets the year.
+   *
+   * @return int
+   *   Returns year value.
+   */
+  public function getYear(): int;
+
+  /**
+   * Gets the month.
+   *
+   * @return int
+   *   Returns month value.
+   */
+  public function getMonth(): int;
+
+  /**
+   * Gets the number of clicks in the year + month pair.
+   *
+   * @return int
+   *   Returns number of clicks value.
+   */
+  public function getClickCount(): int;
 
 }

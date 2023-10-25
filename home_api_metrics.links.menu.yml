@@ -1,0 +1,6 @@
+home_api_metrics.collection:
+  title: 'HOME API metrics'
+  route_name: entity.home_api_metrics.collection
+  description: 'List HOME API metrics entities'
+  parent: system.admin_content
+  weight: 10

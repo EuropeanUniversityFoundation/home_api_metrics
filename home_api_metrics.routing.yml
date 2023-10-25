@@ -5,9 +5,9 @@ home_api_metrics.accomodation.module.open:
     _controller: '\Drupal\home_api_metrics\Controller\HomeApiMetricsOpenController::handleModuleOpen'
     _title: 'HOME metrics module opened endpoint'
   requirements:
-    _permission: 'use home api metrics endpoints' # TODO: Review later
+    _permission: 'use home api metrics endpoints'
   options:
-    _auth: ['key_auth', 'cookie'] # TODO: Review later
+    _auth: ['key_auth', 'cookie'] # TODO: Remove 'key_auth' in release
 home_api_metrics.accomodation.provider.open:
   path: '/accommodation/metrics/provider/open/{provider_id}'
   methods: ['POST']
@@ -15,9 +15,9 @@ home_api_metrics.accomodation.provider.open:
     _controller: '\Drupal\home_api_metrics\Controller\HomeApiMetricsOpenController::handleProviderOpen'
     _title: 'HOME metrics provider opened endpoint'
   requirements:
-    _permission: 'use home api metrics endpoints' # TODO: Review later
+    _permission: 'use home api metrics endpoints'
   options:
-    _auth: ['key_auth', 'cookie'] # TODO: Review later
+    _auth: ['key_auth', 'cookie'] # TODO: Remove 'key_auth' in release
     parameters:
       provider_id:
         type: string
@@ -28,9 +28,9 @@ home_api_metrics.accommodation.module.stats:
     _controller: '\Drupal\home_api_metrics\Controller\HomeApiMetricsStatsController::handleModuleStats'
     _title: 'HOME metrics module statistics endpoint'
   requirements:
-    _permission: 'access home api metrics statistics endpoint' # TODO: Review later
+    _permission: 'access home api metrics statistics endpoint'
   options:
-    _auth: ['key_auth', 'cookie'] # TODO: Review later
+    _auth: ['key_auth', 'cookie'] # TODO: Remove 'key_auth' in release
 home_api_metrics.accommodation.provider.stats:
   path: '/accommodation/metrics/provider/stats'
   methods: ['GET']
@@ -38,6 +38,6 @@ home_api_metrics.accommodation.provider.stats:
     _controller: '\Drupal\home_api_metrics\Controller\HomeApiMetricsStatsController::handleProviderStats'
     _title: 'HOME metrics module statistics endpoint'
   requirements:
-    _permission: 'access home api metrics statistics endpoint' # TODO: Review later
+    _permission: 'access home api metrics statistics endpoint'
   options:
-    _auth: ['key_auth', 'cookie'] # TODO: Review later
+    _auth: ['key_auth', 'cookie'] # TODO: Remove 'key_auth' in release

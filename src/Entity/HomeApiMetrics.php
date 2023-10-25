@@ -49,14 +49,14 @@ class HomeApiMetrics extends ContentEntityBase implements HomeApiMetricsInterfac
   /**
    * {@inheritdoc}
    */
-  public function getTitle() {
+  public function getTitle(): string {
     return $this->get('title')->value;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function setTitle($title) {
+  public function setTitle($title): HomeApiMetricsInterface {
     $this->set('title', $title);
     return $this;
   }
@@ -64,7 +64,7 @@ class HomeApiMetrics extends ContentEntityBase implements HomeApiMetricsInterfac
   /**
    * {@inheritdoc}
    */
-  public function getClickCount() {
+  public function getClickCount(): int {
     return $this->get('click_count')->value ? $this->get('click_count')->value : 0;
   }
 
@@ -79,7 +79,7 @@ class HomeApiMetrics extends ContentEntityBase implements HomeApiMetricsInterfac
   /**
    * {@inheritdoc}
    */
-  public function getYear() {
+  public function getYear(): int {
     return $this->get('year')->value;
   }
 
@@ -94,7 +94,7 @@ class HomeApiMetrics extends ContentEntityBase implements HomeApiMetricsInterfac
   /**
    * {@inheritdoc}
    */
-  public function getMonth() {
+  public function getMonth(): int {
     return $this->get('month')->value;
   }
 
@@ -132,17 +132,29 @@ class HomeApiMetrics extends ContentEntityBase implements HomeApiMetricsInterfac
       ->setLabel(t('Title'))
       ->setDescription(t('The title of the home api metrics entity.'))
       ->setRequired(TRUE)
-      ->setSetting('max_length', 255);
+      ->setSetting('max_length', 255)
+      ->setDisplayOptions('view', [
+        'type' => 'string_textfield',
+        'weight' => -20,
+      ]);
 
     $fields['year'] = BaseFieldDefinition::create('integer')
-      ->setLabel(t('Month'))
+      ->setLabel(t('Year'))
       ->setDescription(t('Year clicks were completed'))
-      ->setRequired(FALSE);
+      ->setRequired(FALSE)
+      ->setDisplayOptions('view', [
+        'type' => 'integer',
+        'weight' => -40,
+      ]);
 
     $fields['month'] = BaseFieldDefinition::create('integer')
       ->setLabel(t('Month'))
       ->setDescription(t('Month clicks were completed'))
-      ->setRequired(FALSE);
+      ->setRequired(FALSE)
+      ->setDisplayOptions('view', [
+        'type' => 'integer',
+        'weight' => -30,
+      ]);
 
     $fields['group'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Provider name'))
@@ -152,8 +164,11 @@ class HomeApiMetrics extends ContentEntityBase implements HomeApiMetricsInterfac
         [
           'max_length' => 255,
           'default_value' => NULL,
-        ]
-      );
+        ])
+      ->setDisplayOptions('view', [
+        'type' => 'text',
+        'weight' => -30,
+      ]);
 
     $fields['click_count'] = BaseFieldDefinition::create('integer')
       ->setLabel(t('Click count'))
@@ -163,7 +178,11 @@ class HomeApiMetrics extends ContentEntityBase implements HomeApiMetricsInterfac
           'default_value' => 0,
         ]
       )
-      ->setRequired(FALSE);
+      ->setRequired(FALSE)
+      ->setDisplayOptions('view', [
+        'type' => 'integer',
+        'weight' => -20,
+      ]);
 
     return $fields;
   }

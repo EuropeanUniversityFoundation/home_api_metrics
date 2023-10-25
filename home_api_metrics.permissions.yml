@@ -1,21 +1,30 @@
 use home api metrics endpoints:
   title: 'Access the HOME API Metrics endpoint'
   description: 'Permission to access the HOME API metrics endpoint. Should be permitted for every authenticated user in order for HOME API metrics to work properly.'
-  restrict access: true
 access home api metrics statistics endpoint:
-  title: 'Access the endpoints, that expose all HOME API metrics statistics'
+  title: 'Access the endpoints exposing HOME API metrics statistics'
+  description: 'Permission to view the HOME API metrics via an endpoint. Should only be permitted for administrators and content managers.'
   restrict access: true
 administer home api metrics:
   title: 'Administer Home Api Metrics data and settings'
+  description: 'Full access to the HOME API metrics related content, Can create, view, update, delete metrics entities'
   restrict access: true
 access home api metrics overview:
   title: 'Access Home Api Metrics overview page'
+  description: 'Permission to view the full list of HOME API metrics data through the admin UI'
 # delete home api metrics:
 #   title: Delete Home Api Metrics
+#   description: 'Permission to delete metrics entities. This operation should not be used, limit access to administrators!'
+#   restrict access: true
 # create home api metrics:
 #   title: Create Home Api Metrics
+#   description: 'Permission to create metrics entities. Metrics entities are created automatically, limit acces to administrators!'
+#   restrict access: true
 # view home api metrics:
 #   title: View Home Api Metrics
+#   description: 'Permission to view single metrics entities.'
 # edit home api metrics:
 #   title: Edit Home Api Metrics
+#   description: 'Permission to edit metrics entities. Metrics entities are modified automatically, limit access to administrators!'
+#   restrict access: true
 

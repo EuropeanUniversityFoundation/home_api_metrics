@@ -18,6 +18,13 @@ class HomeApiMetricsService {
   protected $entityTypeManager;
 
   /**
+   * Entity storage from EntityTypeManager.
+   *
+   * @var Drupal\Core\Entity\EntityStorageInterface
+   */
+  protected $entityStorage;
+
+  /**
    * The time service.
    *
    * @var \Drupal\Component\Datetime\TimeInterface

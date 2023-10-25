@@ -2,12 +2,12 @@
 
 namespace Drupal\home_api_metrics\Controller;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Component\DateTime\Time;
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\home_api_metrics\HomeApiMetricsService;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Drupal\Component\DateTime\Time;
-use Drupal\home_api_metrics\HomeApiMetricsService;
 
 /**
  * Metrics for the HOME API.
@@ -56,7 +56,6 @@ class HomeApiMetricsOpenController extends ControllerBase {
    */
   public function handleModuleOpen(Request $request): JsonResponse {
     $time = $this->time->getRequestTime();
-    // $time = strtotime('2022-11-04');
     $entity = $this->homeApiMetricsService->addModuleOpen($time);
 
     return new JsonResponse(
@@ -73,7 +72,6 @@ class HomeApiMetricsOpenController extends ControllerBase {
    */
   public function handleProviderOpen(Request $request, string $provider_id) {
     $time = $this->time->getRequestTime();
-    // $time = strtotime('2022-08-01');
     $group = $request->query->get('group');
 
     $entity = $this->homeApiMetricsService->addProviderOpen($time, $provider_id);

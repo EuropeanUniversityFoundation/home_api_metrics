@@ -2,9 +2,9 @@
 
 namespace Drupal\home_api_metrics;
 
+use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityListBuilder;
-use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Routing\RedirectDestinationInterface;
@@ -70,7 +70,7 @@ class HomeApiMetricsListBuilder extends EntityListBuilder {
       ->count()
       ->execute();
 
-    $build['summary']['#markup'] = $this->t('Total home api metricses: @total', ['@total' => $total]);
+    $build['summary']['#markup'] = $this->t('Total home api metrics records: @total', ['@total' => $total]);
     return $build;
   }
 
@@ -80,6 +80,9 @@ class HomeApiMetricsListBuilder extends EntityListBuilder {
   public function buildHeader() {
     $header['id'] = $this->t('ID');
     $header['title'] = $this->t('Title');
+    $header['year'] = $this->t('Year');
+    $header['month'] = $this->t('Month');
+    $header['Clicks'] = $this->t('Clicks');
     return $header + parent::buildHeader();
   }
 
@@ -90,6 +93,9 @@ class HomeApiMetricsListBuilder extends EntityListBuilder {
     /** @var \Drupal\home_api_metrics\HomeApiMetricsInterface $entity */
     $row['id'] = $entity->id();
     $row['title'] = $entity->toLink();
+    $row['year'] = $entity->getYear();
+    $row['month'] = $entity->getMonth();
+    $row['clickCount'] = $entity->getClickCount();
     return $row + parent::buildRow($entity);
   }
 

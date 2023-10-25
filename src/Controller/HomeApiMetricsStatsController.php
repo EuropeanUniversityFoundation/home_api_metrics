@@ -2,12 +2,12 @@
 
 namespace Drupal\home_api_metrics\Controller;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Component\DateTime\Time;
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\home_api_metrics\HomeApiMetricsService;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Drupal\Component\DateTime\Time;
-use Drupal\home_api_metrics\HomeApiMetricsService;
 
 /**
  * Middleware for the HOME API.

@@ -2,15 +2,15 @@ entity.home_api_metrics.view:
   title: View
   route_name: entity.home_api_metrics.canonical
   base_route: entity.home_api_metrics.canonical
-entity.home_api_metrics.edit_form:
-  title: Edit
-  route_name: entity.home_api_metrics.edit_form
-  base_route: entity.home_api_metrics.canonical
-entity.home_api_metrics.delete_form:
-  title: Delete
-  route_name: entity.home_api_metrics.delete_form
-  base_route: entity.home_api_metrics.canonical
-  weight: 10
+# entity.home_api_metrics.edit_form:
+#   title: Edit
+#   route_name: entity.home_api_metrics.edit_form
+#   base_route: entity.home_api_metrics.canonical
+# entity.home_api_metrics.delete_form:
+#   title: Delete
+#   route_name: entity.home_api_metrics.delete_form
+#   base_route: entity.home_api_metrics.canonical
+#   weight: 10
 entity.home_api_metrics.collection:
   title: HOME API metrics
   route_name: entity.home_api_metrics.collection
