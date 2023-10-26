@@ -45,7 +45,7 @@ class HomeApiMetricsAccessControlHandler extends EntityAccessControlHandler {
    */
   protected function checkCreateAccess(AccountInterface $account, array $context, $entity_bundle = NULL) {
     return AccessResult::allowedIfHasPermissions(
-      $account, ['create home api metrics', 'administer home api metrics'], 'OR'
+      $account, ['administer home api metrics']
     );
   }
 
