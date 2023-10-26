@@ -65,8 +65,9 @@ class HomeApiMetricsListBuilder extends EntityListBuilder {
   public function render() {
     $build['table'] = parent::render();
 
-    $total = $this->getStorage()
+    $total = $this->storage
       ->getQuery()
+      ->accessCheck(FALSE)
       ->count()
       ->execute();
 

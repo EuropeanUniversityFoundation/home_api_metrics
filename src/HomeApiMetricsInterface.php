@@ -26,7 +26,7 @@ interface HomeApiMetricsInterface extends ContentEntityInterface {
    * @return \Drupal\home_api_metrics\HomeApiMetricsInterface
    *   The called home api metrics entity.
    */
-  public function setTitle($title): HomeApiMetricsInterface;
+  public function setTitle(string $title): HomeApiMetricsInterface;
 
   /**
    * Gets the year.
@@ -37,12 +37,34 @@ interface HomeApiMetricsInterface extends ContentEntityInterface {
   public function getYear(): int;
 
   /**
+   * Sets year.
+   *
+   * @param int $year
+   *   Year of metrics data.
+   *
+   * @return HomeApiMetricsInterface
+   *   The modified entity.
+   */
+  public function setYear(int $year): HomeApiMetricsInterface;
+
+  /**
    * Gets the month.
    *
    * @return int
-   *   Returns month value.
+   *   Returns month number.
    */
   public function getMonth(): int;
+
+  /**
+   * Sets month.
+   *
+   * @param int $month
+   *   Month of metrics data.
+   *
+   * @return HomeApiMetricsInterface
+   *   The modified entity.
+   */
+  public function setMonth(int $month): HomeApiMetricsInterface;
 
   /**
    * Gets the number of clicks in the year + month pair.
@@ -51,5 +73,37 @@ interface HomeApiMetricsInterface extends ContentEntityInterface {
    *   Returns number of clicks value.
    */
   public function getClickCount(): int;
+
+  /**
+   * Sets click count for year and month.
+   *
+   * @param int $clickCount
+   *   Click count for year and month.
+   *
+   * @return HomeApiMetricsInterface
+   *   The modified entity.
+   */
+  public function setClickCount(int $clickCount): HomeApiMetricsInterface;
+
+  /**
+   * Gets the group.
+   *
+   * Returns the provider name for provider specific metrics.
+   * Returns empty if metrics is general (counts overall clicks on module)
+   *
+   * @return string
+   *   String if provider metrics, empty if general metrics
+   */
+  public function getGroup(): ?string;
+
+  /**
+   * Sets group value.
+   *
+   * Should be empty or value of the provider id.
+   *
+   * @return HomeApiMetricsInterface
+   *   The modified entity.
+   */
+  public function setGroup(string $group = NULL): HomeApiMetricsInterface;
 
 }

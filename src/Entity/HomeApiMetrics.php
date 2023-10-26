@@ -71,7 +71,7 @@ class HomeApiMetrics extends ContentEntityBase implements HomeApiMetricsInterfac
   /**
    * {@inheritdoc}
    */
-  public function setClickCount($count) {
+  public function setClickCount($count): HomeApiMetrics {
     $this->set('click_count', $count);
     return $this;
   }
@@ -86,7 +86,7 @@ class HomeApiMetrics extends ContentEntityBase implements HomeApiMetricsInterfac
   /**
    * {@inheritdoc}
    */
-  public function setYear($year) {
+  public function setYear($year): HomeApiMetrics {
     $this->set('year', $year);
     return $this;
   }
@@ -101,7 +101,7 @@ class HomeApiMetrics extends ContentEntityBase implements HomeApiMetricsInterfac
   /**
    * {@inheritdoc}
    */
-  public function setMonth($month) {
+  public function setMonth($month): HomeApiMetrics {
     $this->set('month', $month);
     return $this;
   }
@@ -109,14 +109,14 @@ class HomeApiMetrics extends ContentEntityBase implements HomeApiMetricsInterfac
   /**
    * {@inheritdoc}
    */
-  public function getGroup() {
+  public function getGroup(): ?string {
     return $this->get('group')->value;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function setGroup($group) {
+  public function setGroup($group = NULL): HomeApiMetrics {
     $this->set('group', $group);
     return $this;
   }
@@ -141,7 +141,7 @@ class HomeApiMetrics extends ContentEntityBase implements HomeApiMetricsInterfac
     $fields['year'] = BaseFieldDefinition::create('integer')
       ->setLabel(t('Year'))
       ->setDescription(t('Year clicks were completed'))
-      ->setRequired(FALSE)
+      ->setRequired(TRUE)
       ->setDisplayOptions('view', [
         'type' => 'integer',
         'weight' => -40,
@@ -150,7 +150,7 @@ class HomeApiMetrics extends ContentEntityBase implements HomeApiMetricsInterfac
     $fields['month'] = BaseFieldDefinition::create('integer')
       ->setLabel(t('Month'))
       ->setDescription(t('Month clicks were completed'))
-      ->setRequired(FALSE)
+      ->setRequired(TRUE)
       ->setDisplayOptions('view', [
         'type' => 'integer',
         'weight' => -30,
@@ -178,7 +178,7 @@ class HomeApiMetrics extends ContentEntityBase implements HomeApiMetricsInterfac
           'default_value' => 0,
         ]
       )
-      ->setRequired(FALSE)
+      ->setRequired(TRUE)
       ->setDisplayOptions('view', [
         'type' => 'integer',
         'weight' => -20,
