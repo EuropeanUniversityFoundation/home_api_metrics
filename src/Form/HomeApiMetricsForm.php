@@ -43,6 +43,29 @@ class HomeApiMetricsForm extends ContentEntityForm {
   }
 
   /**
+   * {@inheritDoc}
+   */
+  public function getFormId() {
+    return 'home_api_metrics.edit';
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public function buildForm(array $form, FormStateInterface $form_state) {
+    /** @var \Drupal\home_api_mterics\HomeApiMetricsEntity $entity */
+    $form = parent::buildForm($form, $form_state);
+
+    $form['warning'] = [
+      '#type' => 'markup',
+      '#markup' => 'HOME API metrics should not be modified!',
+      '#weight' => 1,
+    ];
+
+    return $form;
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function save(array $form, FormStateInterface $form_state) {
