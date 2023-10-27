@@ -27,21 +27,23 @@ The module creates a `home_api_metrics` entity, that counts calls to the endpoin
 The module adds the following endpoints:
   - `/accommodation/metrics/module/open`:
     - Accepts POST requests without a body, needs the `use home api metrics endpoints` permission.
-    - Counts how many times it was called in a given month and year.
+    - Counts how many times it was called in a given month and year. Year and month is calculated from the time of the request.
     - For the metrics to work properly, ALL AUTHENTICATED users have to have the `use home api metrics endpoints`
-  - `/accommodation/metrics/provider/open/{provider_id}`:
+  - `/accommodation/metrics/provider/open/{provider_name}`:
     - Accepts POST requests with an empty body, needs the `use home api metrics endpoints` permission.
-    - URL parameter is the id of the provider fetched from the HOME API.
-    - Counts how many times it was called in a given month and year with the same provider id.
+    - {provider_name} parameter should be a url compatible name of the provider fetched from the HOME API.
+    - Counts how many occasions it was called in a given month and year with the same provider name. Year and month is calculated from the time of the request.
     - For the metrics to work properly, ALL AUTHENTICATED users have to have the `use home api metrics endpoints`
   - `/accommodation/metrics/module/stats`
     - Accepts GET requests, needs the `access home api metrics statistics endpoint` permission.
     - Returns all the metrics data per year and month, in this case how many times the accommodation module was opened.
   - `/accommodation/metrics/provider/stats`
     - Accepts GET requests, needs the `access home api metrics statistics endpoint` permission.
-    - Returns all the metrics data per year and month and provider, in this case how many times any listing of one provider was opened in a given year and month
+    - Returns all the metrics data per year and month and provider, in this case how many times any listing of one provider was opened in a given year and month.
 
 ## Permissions and authentication
-The module adds the `use home api metrics endpoints` and `access home api metrics statistics endpoint` permissions, these have to be added to the roles that should be able to call it. The client should take care of authentication. By default, `cookie` authentication is enabled for the endpoints.
+The module adds the `use home api metrics endpoints`, the `access home api metrics statistics endpoint`, the `administer home api metrics` and `access home api metrics overview` permissions. The client should take care of authentication. By default, `cookie` authentication is enabled for the endpoints.
   - `use home api metrics endpoints` has to be granted for ALL AUTHENTICATED users for the metrics to work properly, because of the way the E+ App frontend works.
-  - `access home api metrics statistics endpoint` should be added to people / systems that should be able to see the metrics.
+  - `access home api metrics statistics endpoint` should be added to people / systems that should be able to see the metrics via the endpoints exposing them.
+  - `administer home api metrics` enables every operation possible on the metrics entites.
+  - `access home api metrics overview` enables the owner of the permission to see the list of metrics data.
