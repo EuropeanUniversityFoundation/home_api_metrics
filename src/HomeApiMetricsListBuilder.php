@@ -67,7 +67,7 @@ class HomeApiMetricsListBuilder extends EntityListBuilder {
 
     $total = $this->storage
       ->getQuery()
-      ->accessCheck(FALSE)
+      ->accessCheck(TRUE)
       ->count()
       ->execute();
 

@@ -41,3 +41,5 @@ home_api_metrics.accommodation.provider.stats:
     _permission: 'access home api metrics statistics endpoint'
   options:
     _auth: ['key_auth', 'cookie'] # TODO: Remove 'key_auth' in release
+# entity.home_api_metrics.collection:
+#   path: '/admin/content/home-api-metrics'
