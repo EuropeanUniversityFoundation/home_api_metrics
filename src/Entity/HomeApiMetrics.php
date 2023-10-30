@@ -30,7 +30,6 @@ use Drupal\home_api_metrics\HomeApiMetricsInterface;
  *   },
  *   base_table = "home_api_metrics",
  *   admin_permission = "administer home api metrics",
- *   collection_permission = "access home api metrics overview",
  *   entity_keys = {
  *     "id" = "id",
  *     "label" = "title",
