@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\Tests\home_api_middleware\Kernel;
+namespace Drupal\Tests\home_api_metrics\Kernel;
 
 use Drupal\Component\Serialization\Json;
 use Drupal\home_api_metrics\HomeApiMetricsService;
