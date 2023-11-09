@@ -72,7 +72,6 @@ class HomeApiMetricsOpenController extends ControllerBase {
    */
   public function handleProviderOpen(Request $request, string $provider_id) {
     $time = $this->time->getRequestTime();
-    $group = $request->query->get('group');
 
     $entity = $this->homeApiMetricsService->addProviderOpen($time, $provider_id);
 

@@ -16,6 +16,7 @@ home_api_metrics.accomodation.provider.open:
     _title: 'HOME metrics provider opened endpoint'
   requirements:
     _permission: 'use home api metrics endpoints'
+    provider_id: '.{1,200}' # Provider id should not be longer than 200 chars (DB field can hold up to 255 characters)
   options:
     _auth: ['key_auth', 'cookie'] # TODO: Remove 'key_auth' in release
     parameters:
