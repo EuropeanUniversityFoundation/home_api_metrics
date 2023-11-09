@@ -1,5 +1,5 @@
 home_api_metrics.accomodation.module.open:
-  path: '/accommodation/metrics/module/open'
+  path: '/api/accommodation/metrics/module/open'
   methods: ['POST']
   defaults:
     _controller: '\Drupal\home_api_metrics\Controller\HomeApiMetricsOpenController::handleModuleOpen'
@@ -9,7 +9,7 @@ home_api_metrics.accomodation.module.open:
   options:
     _auth: ['key_auth', 'cookie'] # TODO: Remove 'key_auth' in release
 home_api_metrics.accomodation.provider.open:
-  path: '/accommodation/metrics/provider/open/{provider_id}'
+  path: '/api/accommodation/metrics/provider/open/{provider_id}'
   methods: ['POST']
   defaults:
     _controller: '\Drupal\home_api_metrics\Controller\HomeApiMetricsOpenController::handleProviderOpen'
@@ -22,7 +22,7 @@ home_api_metrics.accomodation.provider.open:
       provider_id:
         type: string
 home_api_metrics.accommodation.module.stats:
-  path: '/accommodation/metrics/module/stats'
+  path: '/api/accommodation/metrics/module/stats'
   methods: ['GET']
   defaults:
     _controller: '\Drupal\home_api_metrics\Controller\HomeApiMetricsStatsController::handleModuleStats'
@@ -32,7 +32,7 @@ home_api_metrics.accommodation.module.stats:
   options:
     _auth: ['key_auth', 'cookie'] # TODO: Remove 'key_auth' in release
 home_api_metrics.accommodation.provider.stats:
-  path: '/accommodation/metrics/provider/stats'
+  path: '/api/accommodation/metrics/provider/stats'
   methods: ['GET']
   defaults:
     _controller: '\Drupal\home_api_metrics\Controller\HomeApiMetricsStatsController::handleProviderStats'
