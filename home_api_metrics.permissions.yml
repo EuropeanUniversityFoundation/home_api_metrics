@@ -9,9 +9,9 @@ administer home api metrics:
   title: 'Administer Home Api Metrics data and settings'
   description: 'Full access to the HOME API metrics related content, Can create, view, update, delete metrics entities'
   restrict access: true
-access home api metrics overview:
-  title: 'Access Home Api Metrics overview page'
-  description: 'Permission to view the full list of HOME API metrics data through the admin UI'
+# access home api metrics overview:
+#   title: 'Access Home Api Metrics overview page'
+#   description: 'Permission to view the full list of HOME API metrics data through the admin UI'
 # delete home api metrics:
 #   title: Delete Home Api Metrics
 #   description: 'Permission to delete metrics entities. This operation should not be used, limit access to administrators!'

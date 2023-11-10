@@ -20,7 +20,7 @@ class HomeApiMetricsAccessControlHandler extends EntityAccessControlHandler {
     switch ($operation) {
       case 'view':
         return AccessResult::allowedIfHasPermissions(
-          $account, ['administer home api metrics', 'access home api metrics overview']
+          $account, ['administer home api metrics']
         );
 
       case 'update':
