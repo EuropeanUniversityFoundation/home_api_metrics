@@ -25,19 +25,19 @@ The module creates a `home_api_metrics` entity, that counts calls to the endpoin
 
 ## Endpoints added
 The module adds the following endpoints:
-  - `/accommodation/metrics/module/open`:
+  - `/api/accommodation/metrics/module/open`:
     - Accepts POST requests without a body, needs the `use home api metrics endpoints` permission.
     - Counts how many times it was called in a given month and year. Year and month is calculated from the time of the request.
     - For the metrics to work properly, ALL AUTHENTICATED users have to have the `use home api metrics endpoints`
-  - `/accommodation/metrics/provider/open/{provider_name}`:
+  - `/api/accommodation/metrics/provider/open/{provider_name}`:
     - Accepts POST requests with an empty body, needs the `use home api metrics endpoints` permission.
     - {provider_name} parameter should be a url compatible name of the provider fetched from the HOME API.
     - Counts how many occasions it was called in a given month and year with the same provider name. Year and month is calculated from the time of the request.
     - For the metrics to work properly, ALL AUTHENTICATED users have to have the `use home api metrics endpoints`
-  - `/accommodation/metrics/module/stats`
+  - `/api/accommodation/metrics/module/stats`
     - Accepts GET requests, needs the `access home api metrics statistics endpoint` permission.
     - Returns all the metrics data per year and month, in this case how many times the accommodation module was opened.
-  - `/accommodation/metrics/provider/stats`
+  - `/api/accommodation/metrics/provider/stats`
     - Accepts GET requests, needs the `access home api metrics statistics endpoint` permission.
     - Returns all the metrics data per year and month and provider, in this case how many times any listing of one provider was opened in a given year and month.
 
