@@ -95,7 +95,7 @@ class HomeApiMetricsService {
     // Query the metrics entity for a specific year and month.
     $id = $this->entityStorage
       ->getQuery()
-      ->accessCheck(TRUE)
+      ->accessCheck(FALSE)
       ->condition('year', $year)
       ->condition('month', $month)
       ->condition('group', NULL, 'IS NULL')
@@ -131,7 +131,7 @@ class HomeApiMetricsService {
     // Query the metrics entity for a specific year, month and group.
     $id = $this->entityStorage
       ->getQuery()
-      ->accessCheck(TRUE)
+      ->accessCheck(FALSE)
       ->condition('year', $year)
       ->condition('month', $month)
       ->condition('group', $group)
@@ -199,7 +199,9 @@ class HomeApiMetricsService {
   public function getModuleStats() {
     $stats = [];
     // Query the metrics entity.
-    $ids = $this->entityStorage->getQuery()
+    $ids = $this->entityStorage
+      ->getQuery()
+      ->accessCheck(FALSE)
       ->condition('group', NULL, 'IS NULL')
       ->sort('year')
       ->sort('month')
@@ -246,7 +248,9 @@ class HomeApiMetricsService {
   public function getProviderStats() {
     $stats = [];
     // Query the metrics entity.
-    $ids = $this->entityStorage->getQuery()
+    $ids = $this->entityStorage
+      ->getQuery()
+      ->accessCheck(FALSE)
       ->condition('group', NULL, 'IS NOT NULL')
       ->sort('year')
       ->sort('month')
