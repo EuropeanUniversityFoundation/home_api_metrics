@@ -3,18 +3,21 @@
 namespace Drupal\Tests\home_api_metrics\Kernel;
 
 use Drupal\Component\Serialization\Json;
+use Drupal\Core\Session\AccountSwitcherInterface;
 use Drupal\home_api_metrics\HomeApiMetricsService;
 use Drupal\KernelTests\KernelTestBase;
-use Drupal\user\Entity\Role;
+use Drupal\Tests\user\Traits\UserCreationTrait;
 use Drupal\user\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Test description.
+ * Test base for HOME API metrics tests.
  *
- * @group home_api_middleware
+ * @group home_api_metrics
  */
 class HomeApiMetricsTestBase extends KernelTestBase {
+
+  use UserCreationTrait;
 
   /**
    * {@inheritdoc}
@@ -24,6 +27,41 @@ class HomeApiMetricsTestBase extends KernelTestBase {
     'system',
     'user',
   ];
+
+  /**
+   * Admin.
+   *
+   * @var \Drupal\user\Entity\User
+   */
+  public User $adminUser;
+
+  /**
+   * User with access to all endpoints.
+   *
+   * @var \Drupal\user\Entity\User
+   */
+  public User $allEndpointsUser;
+
+  /**
+   * Authenticated user.
+   *
+   * @var \Drupal\user\Entity\User
+   */
+  public User $authenticatedUser;
+
+  /**
+   * Anonymous user.
+   *
+   * @var \Drupal\user\Entity\User
+   */
+  public User $anonymousUser;
+
+  /**
+   * Account switcher service.
+   *
+   * @var \Drupal\Core\Session\AccountSwitcherInterface
+   */
+  public AccountSwitcherInterface $accountSwitcher;
 
   /**
    * HomeApiMetricsService.
@@ -43,28 +81,16 @@ class HomeApiMetricsTestBase extends KernelTestBase {
 
     $this->homeApiMetricsService = \Drupal::service('home_api_metrics.service');
 
-    // Create and save a role with permission to call endpoints.
-    $role_with_normal_access = Role::create(
-      [
-        'label' => 'Normal user',
-        'id' => 'normal_user',
-        'permissions' => [
-          'use home api metrics endpoints',
-        ],
-      ]
-    );
-    $role_with_normal_access->save();
-
-    // Create user having the role with permissions to call endpoints.
-    $userWithAccess = User::create([
-      'name' => $this->randomMachineName(),
-      'roles' => [$role_with_normal_access->id()],
+    $this->adminUser = $this->createUser(values: ['uid' => 1]);
+    $this->allEndpointsUser = $this->createUser([
+      'use home api metrics endpoints',
+      'access home api metrics statistics endpoint',
     ]);
-    $userWithAccess->save();
+    $this->authenticatedUser = $this->createUser(['use home api metrics endpoints']);
+    $this->anonymousUser = $this->createUser(values: ['uid' => 0]);
 
-    /** @var \Drupal\Core\Session\AccountSwitcherInterface $account_switcher */
-    $account_switcher = \Drupal::service('account_switcher');
-    $account_switcher->switchTo($userWithAccess);
+    $this->accountSwitcher = \Drupal::service('account_switcher');
+    $this->accountSwitcher->switchTo($this->allEndpointsUser);
   }
 
   /**
