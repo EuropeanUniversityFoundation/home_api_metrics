@@ -12,8 +12,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Test base for HOME API metrics tests.
- *
- * @group home_api_metrics
  */
 class HomeApiMetricsTestBase extends KernelTestBase {
 

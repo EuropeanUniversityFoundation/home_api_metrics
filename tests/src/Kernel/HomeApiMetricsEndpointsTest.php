@@ -7,7 +7,7 @@ use Drupal\Tests\home_api_metrics\Kernel\HomeApiMetricsTestBase;
 /**
  * Test description.
  *
- * @group home_api_middleware
+ * @group home_api_metrics
  */
 class HomeApiMetricsEndpointsTest extends HomeApiMetricsTestBase {
 

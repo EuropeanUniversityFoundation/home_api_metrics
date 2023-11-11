@@ -8,7 +8,7 @@ use Drupal\Tests\user\Traits\UserCreationTrait;
 /**
  * Tests endpoint access with different users.
  *
- * @group home_api_middleware
+ * @group home_api_metrics
  */
 class HomeApiMetricsAccessTest extends HomeApiMetricsTestBase {
 
