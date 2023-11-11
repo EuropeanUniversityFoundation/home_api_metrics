@@ -3,7 +3,7 @@
 namespace Drupal\home_api_metrics\Controller;
 
 use Drupal\Component\DateTime\Time;
-use \Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Controller\ControllerBase;
 use Drupal\home_api_metrics\HomeApiMetricsService;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
