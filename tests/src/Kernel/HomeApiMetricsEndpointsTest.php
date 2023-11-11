@@ -5,7 +5,7 @@ namespace Drupal\Tests\home_api_metrics\Kernel;
 use Drupal\Tests\home_api_metrics\Kernel\HomeApiMetricsTestBase;
 
 /**
- * Test description.
+ * Tests endpoint response codes and entity creation.
  *
  * @group home_api_metrics
  */
